@@ -12,9 +12,7 @@ import {generateCashRegisterSummary} from "../utils/generateCashRegisterSummary.
 import Users from "../models/Users.js";
 import { adjustInventory } from "./helpers/adjustInventory.js";
 import SaleDetail from "../models/saleDetail.js";
-import Combo from "../models/combo.js";
-import cloudinary from "../utils/cloudinary.js";
-import { client as twilioClient } from "../utils/twilio.js"; 
+import Combo from "../models/combo.js"; 
 import fs from "fs";
 import {sendCashRegisterEmail} from "../services/emailService.js";
 
