@@ -4,7 +4,7 @@ import PDFDocument from "pdfkit";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import productVariant from "../models/productVariant.js";
-import cloudinary from "../utils/cloudinary.js";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -159,17 +159,5 @@ export const generateCashRegisterSummary = async (
 };
 
 
-// Función para subir el PDF a Cloudinary
-export const uploadPdfToCloudinary = async (filePath) => {
-  try {
-    const result = await cloudinary.uploader.upload(filePath, {
-      resource_type: "raw", // importante para archivos no imagen
-      folder: "cierres_caja", // puedes cambiar el nombre de la carpeta
-    });
 
-    return result.secure_url; // esta es la URL pública del PDF
-  } catch (error) {
-    console.error("Error al subir a Cloudinary:", error);
-    throw new Error("No se pudo subir el PDF");
-  }
-};
+
