@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 export const register = async (req, res) => {
     const { name, lastName, email, phone, password, role } = req.body;
 
-   
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{1,10}$/;
 
     try {

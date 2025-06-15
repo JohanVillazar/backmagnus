@@ -612,11 +612,6 @@ export const getOpenCashSummary = async (req, res) => {
     res.status(500).json({ msg: "Error al generar resumen" });
   }
 };
-
-
-
-
-
 //CERRAR TURNO DE CARGA
 export const closeCashRegister = async (req, res) => {
   try {
