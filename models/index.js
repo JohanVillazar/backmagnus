@@ -16,7 +16,7 @@ import PurchaseDetail from "./purchasedetail.js";
 import CashRegisterProduct from "./cashRegisterProduct.js";
 import Table from "./table.js";
 import Order from "./order.js";
-import OrderDetail from "./orderDetail.js";
+import OrderDetail from "./orderdetail.js";
 import ComboComponent from "./ComboComponent.js";
 import Combo from "./combo.js";
 
