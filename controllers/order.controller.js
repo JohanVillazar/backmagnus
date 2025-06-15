@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import Table from "../models/table.js";
 import Order from "../models/order.js";
-import OrderDetail from "../models/orderDetail.js";
+import OrderDetail from "../models/orderdetail.js";
 import ProductVariant from "../models/productVariant.js";
 import sequelize from "../config/db.js";
 import Sale from "../models/sale.js";
