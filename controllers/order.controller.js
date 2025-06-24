@@ -16,8 +16,6 @@ import ComboComponent from "../models/ComboComponent.js";
 import CashRegisterProduct from "../models/cashRegisterProduct.js";
 
 
-
-
 export const createOrderForTable = async (req, res) => {
   const transaction = await sequelize.transaction();
 

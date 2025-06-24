@@ -67,20 +67,24 @@ export const generateCashRegisterSummary = async (
   doc.text(`Usuario:  ${cashRegister.User?.name || "N/A"}`);
   doc.text(
     `Apertura: ${new Date(cashRegister.openedAt).toLocaleString("es-CO", {
+      timeZone: "America/Bogota",
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      hour12: false,
     })}`
   );
   doc.text(
     `Cierre:   ${new Date(cashRegister.closedAt).toLocaleString("es-CO", {
+      timeZone: "America/Bogota",
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      hour12: false,
     })}`
   );
   divider();

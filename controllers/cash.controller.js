@@ -758,7 +758,7 @@ const pdfPath = await generateCashRegisterSummary(cashRegister, productSummary, 
 
 // 🔹 Enviar por correo electrónico
   try {
-    await sendCashRegisterEmail("baruterraza2024@gmail.com", pdfPath); //correo del administrador de punto
+    await sendCashRegisterEmail("simulagency@gmail.com", pdfPath); //correo del administrador de punto
     console.log("📧 Tirilla enviada por correo");
   } catch (emailError) {
     console.error("❌ Error enviando email:", emailError?.message || emailError);
