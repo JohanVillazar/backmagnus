@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import  sequelize  from "../config/db.js";
+import Category from "./Category.js";
 
  const Combo = sequelize.define("Combo", {
   id: {
