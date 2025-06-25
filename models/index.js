@@ -19,7 +19,7 @@ import Order from "./order.js";
 import OrderDetail from "./orderdetail.js";
 import ComboComponent from "./ComboComponent.js";
 import Combo from "./combo.js";
-import Category from "./Category.js"
+
 
 
 
