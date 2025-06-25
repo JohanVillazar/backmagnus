@@ -11,6 +11,14 @@ import  sequelize  from "../config/db.js";
     type: DataTypes.STRING,
     allowNull: false
   },
+   categoryId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: Category,
+          key: 'id'
+        }
+      },
   description: DataTypes.TEXT,
   price: {
     type: DataTypes.FLOAT,

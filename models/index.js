@@ -19,6 +19,8 @@ import Order from "./order.js";
 import OrderDetail from "./orderdetail.js";
 import ComboComponent from "./ComboComponent.js";
 import Combo from "./combo.js";
+import Category from "./Category.js"
+
 
 
 // Define associations
@@ -78,6 +80,10 @@ OrderDetail.belongsTo(Order, { foreignKey: "orderId" });
 
 productVariant.hasMany(OrderDetail, { foreignKey: "variantId" });
 OrderDetail.belongsTo(productVariant, { foreignKey: "variantId" });
+
+//relacion combo-categorias
+Combo.belongsTo(Category, { foreignKey: "categoryId" });
+Category.hasMany(Combo, { foreignKey: "categoryId" });
 
 //combos
 Combo.hasMany(ComboComponent, {

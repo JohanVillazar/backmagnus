@@ -2,6 +2,7 @@ import  ComboComponent  from "../models/ComboComponent.js";
 import  Combo  from "../models/combo.js";
 import productVariant from "../models/productVariant.js";
 import Products from "../models/products.js";
+import Category from "../models/Category.js";
 
 export const setComboComponents = async (req, res) => {
   try {
@@ -27,9 +28,9 @@ export const setComboComponents = async (req, res) => {
   }
 };
 
-export const createCombo = async (req, res) => {
+  export const createCombo = async (req, res) => {
   try {
-    const { name, description, price, componentes } = req.body;
+    const { name, description, price, componentes, categoryId } = req.body;
 
     // Validar componentes
     if (!Array.isArray(componentes) || componentes.length === 0) {
@@ -47,8 +48,18 @@ export const createCombo = async (req, res) => {
       }
     }
 
+    // Validar categoría
+    if (!categoryId) {
+      return res.status(400).json({ msg: "Debes seleccionar una categoría para el combo" });
+    }
+
+    const categoryExists = await Category.findByPk(categoryId);
+    if (!categoryExists) {
+      return res.status(404).json({ msg: `La categoría con ID ${categoryId} no existe` });
+    }
+
     // Crear combo base
-    const combo = await Combo.create({ name, description, price });
+    const combo = await Combo.create({ name, description, price, categoryId });
 
     // Asociar componentes
     for (const comp of componentes) {
@@ -65,7 +76,6 @@ export const createCombo = async (req, res) => {
     res.status(500).json({ msg: "Error al crear el combo" });
   }
 };
-
 
 
 export const getAllCombos = async (req, res) => {
