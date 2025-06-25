@@ -39,8 +39,6 @@ app.use('/api/order', orderRouter);
 app.use('/api/combo', comboRouter);
 
 
-app.get('/', (req, res) => {
-    res.send('API funcionando');
-  });
+
   
   export default app;

@@ -120,14 +120,19 @@ SaleDetail.belongsTo(Combo, {
 // Sync database with optimized options
 const syncDB = async () => {
   try {
-    await sequelize.sync({ force: false }); // Use force: false for production
-    console.log("✅ Database synchronized successfully");
+    await sequelize.authenticate(); // 🔍 Verifica la conexión
+    console.log("✅ Conexión a la base de datos establecida correctamente");
+
+    await sequelize.sync({ force: false }); // 🗂️ Sincroniza modelos sin borrar datos
+    console.log("✅ Base de datos sincronizada");
   } catch (error) {
-    console.error("❌ Error synchronizing the database:", error);
+    console.error("❌ Error al conectar o sincronizar la base de datos:", error);
+    process.exit(1); // 🛑 Salida del proceso si falla
   }
 };
 
 syncDB();
+
 
 export {
   sequelize,
