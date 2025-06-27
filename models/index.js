@@ -129,7 +129,7 @@ const syncDB = async () => {
     await sequelize.authenticate(); // 🔍 Verifica la conexión
     console.log("✅ Conexión a la base de datos establecida correctamente");
 
-    await sequelize.sync({ force: false }); // 🗂️ Sincroniza modelos sin borrar datos
+    await sequelize.sync({ force: true }); // 🗂️ Sincroniza modelos sin borrar datos
     console.log("✅ Base de datos sincronizada");
   } catch (error) {
     console.error("❌ Error al conectar o sincronizar la base de datos:", error);
