@@ -134,7 +134,7 @@ export const getRecentPurchases = async (req, res) => {
     const purchases = await Purchase.findAll({
       limit: 6,
       order: [["createdAt", "DESC"]],
-      attributes: ["reference", "totalAmount", "status", "createdAt"],
+      attributes: ["id", "reference", "totalAmount", "status", "createdAt"],
       include: [
         {
           model: User,
