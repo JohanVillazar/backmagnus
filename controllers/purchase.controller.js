@@ -82,6 +82,33 @@ export const createPurchase = async (req, res) => {
   };
 
 
+  //ACTUALIZAR ESTADO
+  export const updatePurchaseStatus = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  if (!status) {
+    return res.status(400).json({ msg: "Debes especificar el nuevo estado de la compra." });
+  }
+
+  try {
+    const purchase = await Purchase.findByPk(id);
+
+    if (!purchase) {
+      return res.status(404).json({ msg: "Compra no encontrada." });
+    }
+
+    purchase.status = status;
+    await purchase.save();
+
+    return res.status(200).json({ msg: "Estado de la compra actualizado correctamente.", purchase });
+  } catch (error) {
+    console.error("❌ Error al actualizar el estado de la compra:", error);
+    return res.status(500).json({ msg: "Error interno del servidor." });
+  }
+};
+
+
   
 export const getPurchaseSummary = async (req, res) => {
   try {
