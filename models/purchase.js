@@ -17,13 +17,21 @@ import productVariant from "./productVariant.js";
         allowNull: false
     },
     SucursalId: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        references: {
-            model: Sucursal,
-            key: 'id'
-        }
-    },
+         type: DataTypes.UUID,
+         allowNull: false,
+         references: {
+             model: Sucursal,
+             key: 'id'
+         }
+     },
+     SupplierId: {
+         type: DataTypes.UUID,
+         allowNull: false, // o true si puede ser opcional
+         references: {
+             model: "Suppliers",
+             key: "id",
+         },
+     },
     userId: {
         type: DataTypes.UUID,
         allowNull: false,

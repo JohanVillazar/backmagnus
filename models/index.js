@@ -117,6 +117,10 @@ SaleDetail.belongsTo(Combo, {
   as: "combo"
 });
 
+// relacion compras suppliers
+Purchase.belongsTo(Suppliers, { foreignKey: "SupplierId" });
+Suppliers.hasMany(Purchase, { foreignKey: "SupplierId" });
+
 
 
 
