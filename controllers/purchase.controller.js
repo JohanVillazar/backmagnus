@@ -15,14 +15,17 @@ export const createPurchase = async (req, res) => {
     const t = await sequelize.transaction(); // 🔥 Creamos transacción
   
     try {
-      const { SucursalId, userId, details, totalAmount,status } = req.body;
+      const { SucursalId,SupplierId, userId, details, totalAmount,status } = req.body;
   
-      console.log("📌 Datos recibidos en el backend:", req.body);
+     
   
       // ✅ Validaciones básicas
       if (!SucursalId || !userId || !details || details.length === 0 || !totalAmount) {
         return res.status(400).json({ msg: "Todos los campos son obligatorios" });
       }
+      if (!SupplierId) {
+  return res.status(400).json({ msg: "El proveedor (SupplierId) es obligatorio" });
+}
   
       // ✅ Buscar caja abierta (puedes agregar filtro por sucursal si después tienes multisucrusal)
       const openCashRegister = await CashRegister.findOne({ where: { status: "open" } });
@@ -41,6 +44,7 @@ export const createPurchase = async (req, res) => {
         reference,
         totalAmount,
         status,
+        SupplierId
       }, { transaction: t });
   
       // ✅ Procesar cada detalle
