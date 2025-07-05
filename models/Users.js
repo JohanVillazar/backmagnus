@@ -32,7 +32,15 @@ const Users = sequelize.define('Users', {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'user' // o 'admin'
-  }
+  },
+  SucursalId: {
+  type: DataTypes.UUID,
+  allowNull: false,
+  references: {
+    model: "Sucursal", // 👈 cuidado con el nombre exacto de la tabla
+    key: "id",
+  },
+},
 },
 {
    

@@ -1,9 +1,11 @@
 import Users from '../models/Users.js';
+import Sucursal from '../models/sucursal.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const register = async (req, res) => {
-    const { name, lastName, email, phone, password, role } = req.body;
+    const { name, lastName, email, phone, password, role,SucursalId } = req.body;
+    if (!SucursalId) return res.status(400).json({ msg: "SucursalId es obligatorio" });
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{1,10}$/;
 
@@ -19,7 +21,7 @@ export const register = async (req, res) => {
         if (existing) return res.status(400).json({ msg: "El usuario ya existe" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        await Users.create({ name, lastName, email, phone, password: hashedPassword, role });
+        await Users.create({ name, lastName, email, phone, password: hashedPassword, role, SucursalId });
 
         res.status(200).json({ msg: "El usuario se ha creado correctamente" });
     } catch (error) {

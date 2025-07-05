@@ -20,9 +20,6 @@ import OrderDetail from "./orderdetail.js";
 import ComboComponent from "./ComboComponent.js";
 import Combo from "./combo.js";
 
-
-
-
 // Define associations
 Products.hasMany(productVariant, { foreignKey: "productId", as: "Variants" });
 productVariant.belongsTo(Products, { foreignKey: "productId", as: "Product" });
@@ -121,6 +118,9 @@ SaleDetail.belongsTo(Combo, {
 Purchase.belongsTo(Suppliers, { foreignKey: "SupplierId" });
 Suppliers.hasMany(Purchase, { foreignKey: "SupplierId" });
 
+//relacion usuario sucursal
+Users.belongsTo(Sucursal, { foreignKey: "SucursalId" });
+Sucursal.hasMany(Users, { foreignKey: "SucursalId" });
 
 
 
@@ -133,7 +133,7 @@ const syncDB = async () => {
     await sequelize.authenticate(); // 🔍 Verifica la conexión
     console.log("✅ Conexión a la base de datos establecida correctamente");
 
-    await sequelize.sync({ force: false }); // 🗂️ Sincroniza modelos sin borrar datos
+    await sequelize.sync({ force: true }); // 🗂️ Sincroniza modelos sin borrar datos
     console.log("✅ Base de datos sincronizada");
   } catch (error) {
     console.error("❌ Error al conectar o sincronizar la base de datos:", error);
