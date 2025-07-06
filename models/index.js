@@ -122,6 +122,23 @@ Suppliers.hasMany(Purchase, { foreignKey: "SupplierId" });
 Users.belongsTo(Sucursal, { foreignKey: "SucursalId" });
 Sucursal.hasMany(Users, { foreignKey: "SucursalId" });
 
+//relacion sucursal prodcuto
+Products.belongsTo(Sucursal, {
+  foreignKey: 'SucursalId',
+  as: 'Sucursal',
+});
+
+Sucursal.hasMany(Products, {
+  foreignKey: 'SucursalId',
+  as: 'Products',
+});
+
+
+
+
+
+
+
 
 
 

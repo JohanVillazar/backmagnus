@@ -8,8 +8,16 @@ const Products = sequelize.define("Products", {
      id:{
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-     },
+      primaryKey: true,
+   },
+   SucursalId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+         model: 'Sucursal', // Asegúrate que coincide con el nombre de la tabla
+         key: 'id',
+      },
+   },
      name:{
         type: DataTypes.STRING,
         allowNull: false
